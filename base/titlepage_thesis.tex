@@ -1,0 +1,66 @@
+% **************************************************************************************************
+% ** LaTeX Report and Thesis Template
+% **************************************************************************************************
+%
+% ***** Copyright, License, and Authors *****
+% Copyright 2003-present Daniel Arnitz
+% Copyright 2010-2014 Paul Meissner, Stefan Petrik
+%    
+%
+% This file is part of the LaTeX Report and Thesis Template.
+%
+% The LaTeX Report and Thesis Template is free software: you can redistribute it and/or modify it 
+% under the terms of the GNU General Public License as published by the Free Software Foundation, 
+% either version 3 of the License, or (at your option) any later version.
+%
+% The LaTeX Report and Thesis Template is distributed in the hope that it will be useful, but WITHOUT ANY
+% WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+% See the GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License along with the LaTeX Report and  
+% Thesis Template. If not, see <http://www.gnu.org/licenses/>.
+%
+%
+% ***** Changelog *****
+% 0.1   2010-01-25   extracted from report template by Daniel Arnitz -> SPSC Report and Thesis Template
+% 0.x   2010-2012    development as "SPSC Report and Thesis Template" (changelog deleted from this file)
+% 1.0   2014-12-31   released under GNU GPL v3 with permission of all authors
+%
+%
+% ***** Todo *****
+%
+% **************************************************************************************************
+
+% **************************************************************************************************
+\begin{titlepage}
+\vspace*{-1cm}
+\hfill
+\begin{minipage}{\LogoWidth}
+\includegraphics[width=\LogoWidth]{\LogoFile}
+\end{minipage}\\
+\vspace*{2.2cm}
+\begin{center}
+  \hrulefill
+  \textsc{\large~\ThesisType~}
+  \hspace{-2mm} \hrulefill \\[5.5mm]
+  \parbox{\textwidth}{\centering\scshape\huge\linespread{0.9}\selectfont\DocumentTitle}
+  \\[4mm] \hrulefill \\[2mm]
+  {\centering\parbox{0.9\textwidth}{\centering\Large\DocumentSubtitle}} \\[2.0cm] \par
+  \ifthenelse{\equal{\DocumentLanguage}{en}}{
+      conducted at the \\ \Organizations
+      \\[1cm]\par by \\ \DocumentAuthor
+      \\[2.0cm]\par Supervisors: \\ \Supervisors
+      \\[1cm]\par Assessors/Examiners: \\ \Examiners
+      \\[1.75cm]\par
+  }{}
+  \ifthenelse{\equal{\DocumentLanguage}{de}}{
+      durchgeführt am \\ \Organizations
+      \\[1cm]\par von \\ \DocumentAuthor
+      \\[2.5cm]\par Betreuer: \\ \Supervisors
+      \\[1cm]\par Begutachter: \\ \Examiners
+      \\[1.75cm]\par
+  }{}
+  \vfill{\flushright \DocumentDate}\\
+  {\scriptsize\vspace*{3mm}\SpecialNote\vspace*{-8mm}}
+\end{center}
+\end{titlepage}

@@ -1,0 +1,178 @@
+% **************************************************************************************************
+% ** LaTeX Report and Thesis Template
+% **************************************************************************************************
+%
+% ***** Copyright, License, and Authors *****
+% Copyright 2003-present Daniel Arnitz
+% Copyright 2010-2014 Paul Meissner, Stefan Petrik
+%    
+%
+% This file is part of the LaTeX Report and Thesis Template.
+%
+% The LaTeX Report and Thesis Template is free software: you can redistribute it and/or modify it 
+% under the terms of the GNU General Public License as published by the Free Software Foundation, 
+% either version 3 of the License, or (at your option) any later version.
+%
+% The LaTeX Report and Thesis Template is distributed in the hope that it will be useful, but WITHOUT ANY
+% WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+% See the GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License along with the LaTeX Report and  
+% Thesis Template. If not, see <http://www.gnu.org/licenses/>.
+%
+%
+% ***** Changelog *****
+% 0.1   2010-01-25   extracted from report template by Daniel Arnitz -> SPSC Report and Thesis Template
+% 0.x   2010-2012    development as "SPSC Report and Thesis Template" (changelog deleted from this file)
+% 1.0   2014-12-31   released under GNU GPL v3 with permission of all authors
+%
+%
+% ***** Todo *****
+% - why doesn't \pagestyle work in preamble while \thispagestyle works? (reported by Markus Froehle)
+% - update reminder commands
+% - list of ...
+% **************************************************************************************************
+
+% **************************************************************************************************
+% basic setup
+\newcommand{\DocumentType}{report} % "thesis" / "report" / "homework"
+\newcommand{\DocumentLanguage}{en} % "en" / "de"
+\newcommand{\PaperSize}{a4paper} % "a4paper" / "letterpaper"
+\newcommand{\Twosided}{true} % "true" / "false"
+
+% **************************************************************************************************
+% template setup -- do not change these unless you know what you are doing!
+\input{./base/packages_\DocumentType}
+\input{./base/layout_\DocumentType}
+\input{./base/macros}
+% \graphicspath{{./drawings/}{./plots/}{./images/}}
+% **************************************************************************************************
+% ATTENTION: There is a stylesheet provided for makeindex; set makeindex to -s "./base/index.sty"
+% **************************************************************************************************
+
+% uncomment to get watermarks:
+% \usepackage[first,bottom,light,draft]{draftcopy}
+% \draftcopyName{ENTWURF}{160}
+
+
+% **************************************************************************************************
+% information fields
+
+% general
+\newcommand{\DocumentTitle}{Title}
+\newcommand{\DocumentSubtitle}{Subtitle}
+\newcommand{\ShortTitle}{Short Title (Header)} % used in headers (keep short!)
+\newcommand{\DocumentAuthor}{Author, Matr.-No.}
+\newcommand{\DocumentDate}{Graz, \today}
+%    for thesis only (will be ignored for reports)
+\newcommand{\ThesisType}{PhD Thesis}
+\newcommand{\Organizations}{Department of Awesomeness \\ My University, Country \\[1cm] in co-operation with \\ The Company \\ City, Country} % SPSC \\ TUG \\[1cm] in cooperation with \\ A Nice Company
+\newcommand{\Supervisors}{Prof. Dipl.-Ing.(FH) Dr. Ickbert Grant \\ Dipl.-Ing. Franz Tippviel-Rotaug} % Supervisor 1 \\ Supervisor 2 \\ ...
+\newcommand{\Examiners}{Assoc.-Prof. Charles J. Tobe Defined, Ph.D.} % Examiner 1 \\ Examiner 2 \\ ...
+\newcommand{\SpecialNote}{This work was funded by the Most Important Funding Agency (MIFA) under grant MIFA-007-B.}
+%   for report only: revision number
+\newcommand{\RevPrefix}{alpha~}
+\newcommand{\RevLarge}{1}
+\newcommand{\RevSmall}{0}
+%   logo file
+\newcommand{\LogoFile}{./base/GenericLogo} % path to logo file
+\newlength{\LogoWidth}\setlength{\LogoWidth}{50mm} % width of logo on titlepage
+
+% confidential? (can of course also be used for other messages/notes)
+\newcommand{\ConfidNote}{\textbf{DRAFT}, \today}
+
+
+% **************************************************************************************************
+% miscellaneous
+
+% correct bad hyphenation
+\hyphenation{}
+
+% switches
+\newboolean{OptDraftMode}
+\newboolean{DisplayContentBoxes}
+% \setboolean{OptDraftMode}{true} % optional draft mode for pixel graphics (speed up generation; add \OptDraft to options)
+% \setboolean{DisplayContentBoxes}{true} % optional boxes with contents (\ContentBox{Content}{NumPages} can be used as "sticky note" with planned contents)
+%   load
+\input{./base/opt_macros}
+
+
+% **************************************************************************************************
+% **************************************************************************************************
+% **************************************************************************************************
+\begin{document}
+% **************************************************************************************************
+% titlepage
+\input{./base/titlepage_\DocumentType}\emptydoublepage
+
+% for thesis: switch to frontmatter
+\ifthenelse{\equal{\DocumentType}{thesis}}{\pagestyle{empty}\pagenumbering{roman}}{}
+
+
+% **************************************************************************************************
+% **************************************************************************************************
+% user-defined part
+
+% FOR THESIS: ADD THE PREAMBLE (ABSTRACT, KURZFASSUNG, ...) HERE (also add an \emptydoublepage in between), e.g.:
+%    \input{my-abstract}
+%    \emptydoublepage
+%    \input{my-kurzfassung}
+%    \emptydoublepage
+%    ...
+% FEEL FREE TO USE \emptypage AND \emptydoublepage TO ADJUST THE LAYOUT
+% USE \thispagestyle{empty} for abstract, etc.
+
+% for thesis: statutory declaration
+\ifthenelse{\equal{\DocumentType}{thesis}}{\input{./base/declaration}}{}
+
+% TOC
+\emptydoublepage
+\tableofcontents
+
+% for thesis: make sure we switch back to standard pagestyles/numbering
+\ifthenelse{\equal{\DocumentType}{thesis}}{\emptydoublepage\pagestyle{scrheadings}\pagenumbering{arabic}\mainmatter}
+
+% FOR THESIS: YOU CAN SET THE PAGE COUNTER HERE TO MAKE IT IDENTICAL TO THE PDF PAGE NUMBER
+% \ifthenelse{\equal{\DocumentType}{thesis}}{\setcounter{page}{7}}{}
+
+
+
+% **************************************************************************************************
+% mainmatter
+
+
+% some introduction
+%    \emptydoublepage %FOR THESIS: ALWAYS START CHAPTERS AT RIGHT SIDE
+\newchapter{Introduction and Usage}{intro}
+This template provides an easy to use document layout and a set of commands that have proven useful for a thesis or other technical or scientific documents. The tempate is organized in individual files rather than a single package or style file to make it easy to use and adapt. Have a look at the code of this document to see how it works! Also have a look at all the source files -- there is a lot of code that is not used or documented here! Most importantly, feel free to adapt the template in any way to suit your need or taste! If you have a specific command or best-practice approach you found useful: tell us! If it fits into this template, we will add it. As always: Feedback, bug reports, and feature request are greatly appreciated!
+
+% chapter 1
+%    \emptydoublepage %FOR THESIS: ALWAYS START CHAPTERS AT RIGHT HAND SIDE
+\renewcommand{\pwd}{chapter1}
+\input{\pwd/usage_sections}
+\input{\pwd/usage_directories}
+\input{\pwd/usage_floats}
+\input{\pwd/usage_misc}
+
+% chapter 2
+%    \emptydoublepage %FOR THESIS: ALWAYS START CHAPTERS AT RIGHT HAND SIDE
+\newchapter{Fancy and Advanced}{advanced}
+\renewcommand{\pwd}{chapter2}
+\input{\pwd/fancy_style}
+\input{\pwd/fancy_math}
+
+
+
+% **************************************************************************************************
+%\appendix
+% \bibliographystyle{./base/IEEEtran}
+% \bibliography{_bibliography}
+
+
+% **************************************************************************************************
+% **************************************************************************************************
+
+% place all floats and create label on last page
+\FloatBarrier\label{end-of-document}
+\end{document}
+

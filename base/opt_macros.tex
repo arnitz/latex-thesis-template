@@ -1,0 +1,39 @@
+% **************************************************************************************************
+% ** LaTeX Report and Thesis Template
+% **************************************************************************************************
+%
+% ***** Copyright, License, and Authors *****
+% Copyright 2003-present Daniel Arnitz
+% Copyright 2010-2014 Paul Meissner, Stefan Petrik
+%    
+%
+% This file is part of the LaTeX Report and Thesis Template.
+%
+% The LaTeX Report and Thesis Template is free software: you can redistribute it and/or modify it 
+% under the terms of the GNU General Public License as published by the Free Software Foundation, 
+% either version 3 of the License, or (at your option) any later version.
+%
+% The LaTeX Report and Thesis Template is distributed in the hope that it will be useful, but WITHOUT ANY
+% WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+% See the GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License along with the LaTeX Report and  
+% Thesis Template. If not, see <http://www.gnu.org/licenses/>.
+%
+%
+% ***** Changelog *****
+% 0.1   2010-01-25   extracted from report template by Daniel Arnitz -> SPSC Report and Thesis Template
+% 0.x   2010-2012    development as "SPSC Report and Thesis Template" (changelog deleted from this file)
+% 1.0   2014-12-31   released under GNU GPL v3 with permission of all authors
+%
+%
+% ***** Todo *****
+%
+% **************************************************************************************************
+
+
+% optional boxes with intended contents or other comments (can be switched on/off)
+\newcommand{\ContentBox}[2]{\ifthenelse{\boolean{DisplayContentBoxes}}{\FloatBarrier\nxtpar\colorbox{yellow}{\parbox{\textwidth}{\footnotesize#1\par\hrulefill\par Number of pages: #2}}\nxtpar}{}}
+
+% optional draft mode for large graphics (add \OptDraft to parameters for \includegraphics)
+\ifthenelse{\boolean{OptDraftMode}}{\newcommand{\OptDraft}{draft}}{\newcommand{\OptDraft}{keepaspectratio}}
